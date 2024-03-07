@@ -1,4 +1,3 @@
-/* Estilização do modal */
 .modal {
   display: none;
   position: fixed;
@@ -21,7 +20,6 @@
   font-size: 16px;
 }
 
-/* Estilização do botão de fechar */
 #closeModal {
   background-color: #b1a5a5;
   border: none;

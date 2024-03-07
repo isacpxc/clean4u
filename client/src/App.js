@@ -15,17 +15,16 @@ function App() {
   const [Data, SetData] = useState([]);
   const [updateDel, setUpdateDel] = useState();
   const [routeFind, setRouteFind] = useState();
-  const mounted = useRef(0)
-  const mountedR = useRef(0)
-  const mountedM = useRef(0)
   const [modal, setModal] = useState('none')
-
   const [nameF, setNameF] = useState('');
   const [emailF, setEmailF] = useState('');
   const [telF, setTelF] = useState('');
-
   const [busca, setBusca] = useState([])
+  const mounted = useRef(0)
+  const mountedR = useRef(0)
+
   
+  // // handles
 
   const handleInputChangeName = (event) => {
     setName(event.target.value);
@@ -67,6 +66,18 @@ function App() {
     setModal('flex')
     setRouteFind(num)
   }
+
+  const modalSwitch = (e) => {
+    if (modal == 'none'){
+      setModal('flex')
+    } else {
+      setModal('none')
+    }
+  }  
+
+  // fim handles
+
+  // useEffects
 
   useEffect(()=>{
     fetchDataRun()
@@ -122,6 +133,9 @@ function App() {
     } 
   },[routeFind])
 
+  // useEffects fim
+
+  // fetchDatas
 
   
   const fetchDataRun = async () =>{
@@ -158,120 +172,53 @@ function App() {
 
     // name
     if (num === 1){
-
-      try{
-        axios.get('http://localhost:7788/info').then(res => {
-          //iram retornar jsons do tipo {"email":"test@gmail.com","name":"caliu","tel":"888","codx":3,"cody":3} por exemplo, quero
-          
           const names = []
-          SetData(res.data)
           setEmailF('')
           setTelF('')
-
-
-          for (const item of res.data){
+          for (const item of Data){
             if (item.name.includes(nameF)){
               names.push(item)
             }
           }
-          
           setBusca(names)
-
-
-        })
-      } catch(err) {
-        console.log('ERRO FOI:'+err)
-      }
-
-      
     }
 
     // email
     if (num === 2){
-      try{
-        axios.get('http://localhost:7788/info').then(res => {
-          //iram retornar jsons do tipo {"email":"test@gmail.com","name":"caliu","tel":"888","codx":3,"cody":3} por exemplo, quero
-          
           const emails = []
-          SetData(res.data)
-
           setNameF('')
           setTelF('')
-
-          for (const item of res.data){
+          for (const item of Data){
             if (item.email.includes(emailF)){
               emails.push(item)
             }
           }
-          
           setBusca(emails)
 
-        })
-      } catch(err) {
-        console.log('ERRO FOI:'+err)
-      }
     }
 
     // tel
     if (num ===3) {
-      try{
-        axios.get('http://localhost:7788/info').then(res => {
-          //iram retornar jsons do tipo {"email":"test@gmail.com","name":"caliu","tel":"888","codx":3,"cody":3} por exemplo, quero
-          
           const tels = []
-          SetData(res.data)
-
           setNameF('')
           setEmailF('')
-
-
-          for (const item of res.data){
+          for (const item of Data){
             if (item.tel.includes(telF)){
               tels.push(item)
             }
           }
-          
           setBusca(tels)
-
-        })
-      } catch(err) {
-        console.log('ERRO FOI:'+err)
-      }
     }
 
     
   }
 
-  const modalSwitch = (e) => {
-    if (modal == 'none'){
-      setModal('flex')
-    } else {
-      setModal('none')
-    }
-  }
+  // fetchDatas fim
 
-  // useEffect(()=>{
-  //   console.log(modal)
-  //   if (mountedM.current < 2){
-  //     mountedM.current = mountedM.current+1
-  //     console.log('alter1')
-  //   } else {
-  //     const modalDiv = document.getElementById('modal')
-  //     if (modal == 'none'){
-  //       modalDiv.style.display = "flex";
-  //     } else {
-  //       modalDiv.style.display = "none";
-  //     }
-  //     console.log('alter')
-  //   }
-  // },[modal])
 
 
   return (
     <>
-
-        
-
         <div id="modal" className="modal" style={{display:`${modal}`}}>
             <span className="modal-content">Distância: 100 km</span>
             <span className="modal-content">Caminho: Rota A</span>
@@ -349,6 +296,8 @@ function App() {
             </ul>
           </div>
           ))}
+
+          {/* lista gerada dinamicamente */}
           {/* <div className="holdInfo">
             <ul>
               <div className='item'>nome:</div>
@@ -358,17 +307,7 @@ function App() {
               <div className='item'>y:</div>
             </ul>
           </div> */}
-
-        
-
-
-
-
-
-
         </div>
-        
-      
       </div>
     </>
   );
