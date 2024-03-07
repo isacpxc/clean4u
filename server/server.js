@@ -6,9 +6,9 @@ const db = require('./db/connection')
 const Users = require('./models/users')
 const bodyParser = require('body-parser');
 
-app.use(cors())
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+app.use(cors()) // para aceitar requisições
+app.use(bodyParser.urlencoded({extended: false})); 
+app.use(bodyParser.json()); // processar solicitações http como json
 
 app.post('/register', async (req,res)=>{
 

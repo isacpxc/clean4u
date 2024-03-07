@@ -93,7 +93,7 @@ node - ```Latest Current Version: 21.7.0 (includes npm 10.5.0)```
 
 mySQL - ```MySQL Server 8.0```
 
-Há alguns comentários explicando o algoritmo do caixeiro viajante em ````server.js```
+Há alguns comentários explicando o algoritmo do caixeiro viajante em ```server.js```
 
 
 
