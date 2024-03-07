@@ -1,0 +1,33 @@
+/* Estilização do modal */
+.modal {
+  display: none;
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.885);
+  z-index: 9999;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(50%);
+  color: #ffffff;
+  border-radius: 10px;
+}
+
+.modal-content {
+  display: block;
+  margin: 20px auto;
+  font-size: 16px;
+}
+
+/* Estilização do botão de fechar */
+#closeModal {
+  background-color: #b1a5a5;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
